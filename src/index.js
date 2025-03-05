@@ -170,19 +170,17 @@ ipcMain.handle('load-tasks', async (event, projectName) => {
   }
 });
 
-// Редактирование проекта
 ipcMain.handle('edit-project', async (event, oldName, newName) => {
   try {
       const project = await Project.findOneAndUpdate({ name: oldName }, { name: newName }, { new: true });
       if (!project) return { success: false, error: 'Проект не найден' };
       return { success: true, project };
   } catch (error) {
-      console.error('Ошибка редактирования проекта:', error);
+      console.error('Project edit error:', error);
       return { success: false, error: error.message };
   }
 });
 
-// Удаление проекта (и всех задач внутри)
 ipcMain.handle('delete-project', async (event, projectName) => {
   try {
       const project = await Project.findOneAndDelete({ name: projectName });
@@ -191,31 +189,29 @@ ipcMain.handle('delete-project', async (event, projectName) => {
       await Task.deleteMany({ project: projectName }); // Удаляем все связанные задачи
       return { success: true };
   } catch (error) {
-      console.error('Ошибка удаления проекта:', error);
+      console.error('Error deleting project:', error);
       return { success: false, error: error.message };
   }
 });
 
-// Редактирование задачи
 ipcMain.handle('edit-task', async (event, taskId, newText) => {
   try {
       const task = await Task.findByIdAndUpdate(taskId, { text: newText }, { new: true });
       if (!task) return { success: false, error: 'Задача не найдена' };
       return { success: true, task };
   } catch (error) {
-      console.error('Ошибка редактирования задачи:', error);
+      console.error('Edit task failed:', error);
       return { success: false, error: error.message };
   }
 });
 
-// Удаление задачи
 ipcMain.handle('delete-task', async (event, taskId) => {
   try {
       const task = await Task.findByIdAndDelete(taskId);
       if (!task) return { success: false, error: 'Задача не найдена' };
       return { success: true };
   } catch (error) {
-      console.error('Ошибка удаления задачи:', error);
+      console.error('Problem removal error:', error);
       return { success: false, error: error.message };
   }
 });
