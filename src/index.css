@@ -1,0 +1,281 @@
+/* Определяем переменные для основных цветов */
+:root {
+  --primary-color: #007bff;
+  --primary-hover: #0056b3;
+  --background-gradient: linear-gradient(135deg, #cce6ff, #f0f8ff);
+}
+
+/* Общие стили */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--background-gradient);
+  color: #333;
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Заголовки */
+h1 {
+  text-align: center;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+/* Контейнер для центрирования */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Форма создания проекта */
+form {
+  width: 100%;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+form input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+form button {
+  width: 100%;
+  padding: 10px;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+form button:hover {
+  background: var(--primary-hover);
+}
+
+/* Список проектов */
+#projectList {
+  width: 100%;
+}
+
+#projectList ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+#projectList li {
+  background: white;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+/* Кнопка перехода к планированию */
+.plan-button {
+  background: var(--primary-color);
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.plan-button:hover {
+  background: var(--primary-hover);
+}
+
+/* Кнопка "Назад к проектам" */
+#backButton {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 10px 15px;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#backButton:hover {
+  background: var(--primary-hover);
+}
+
+/* Доска задач */
+.board {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+  gap: 20px;
+  width: 100%;
+  max-width: 900px;
+}
+
+/* Колонки */
+.column {
+  background: white;
+  padding: 15px;
+  width: 30%;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Заголовок колонки */
+.column-header {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px;
+  background: var(--primary-color);
+  color: white;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* Кнопки добавления задачи */
+.column button {
+  background: var(--primary-color);
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.column button:hover {
+  background: var(--primary-hover);
+}
+
+/* Карточки задач */
+.task-container {
+  min-height: 250px;
+  padding: 10px;
+  background: #f8f9fa;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.task {
+  background: #e9ecef;
+  padding: 12px;
+  margin: 8px;
+  border-radius: 5px;
+  cursor: grab;
+  transition: 0.3s;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.task:hover {
+  background: #dee2e6;
+  transform: scale(1.02);
+}
+
+/* Затемнение фона при открытии модального окна */
+.modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 999;
+}
+
+/* Модальное окно */
+#taskModal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  text-align: center;
+}
+
+#taskModal input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+#saveTaskButton {
+  background: var(--primary-color);
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#saveTaskButton:hover {
+  background: var(--primary-hover);
+}
+
+/* Стили для кнопок действий */
+.edit-button, .delete-button, .save-edit-button, .cancel-edit-button {
+  margin-left: 5px;
+  padding: 4px 8px;
+  font-size: 12px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+/* Кнопки редактирования и сохранения в синем тоне */
+.edit-button, .save-edit-button {
+  background: var(--primary-color);
+  color: white;
+}
+
+.edit-button:hover, .save-edit-button:hover {
+  background: var(--primary-hover);
+}
+
+/* Кнопки удаления и отмены с красным акцентом для контраста */
+.delete-button, .cancel-edit-button {
+  background: #ff5f6d;
+  color: white;
+}
+
+.delete-button:hover, .cancel-edit-button:hover {
+  background: #e63946;
+}
