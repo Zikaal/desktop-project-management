@@ -1,7 +1,7 @@
 // db.js
 const mongoose = require('mongoose');
 
-const mongoURI = 'mongodb+srv://alikhanzinetov06:gDBSrKtQb5pbRgCF@cluster0.pfu4s.mongodb.net/trello?retryWrites=true&w=majority'; 
+const mongoURI = 'mongodb+srv://{username}:{password}@cluster0.pfu4s.mongodb.net/trello?retryWrites=true&w=majority'; 
 
 // Define Project schema
 const projectSchema = new mongoose.Schema({
